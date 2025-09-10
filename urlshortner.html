@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Mode URL Shortener</title>
+
+    <!-- Google tag (gtag.js) - REPLACE the ID below if yours is different -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZSPR40F6T"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GZSPR40F6T'); /* same ID here */
+  </script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <nav>
+        <div class="container">
+            <a href="index.html">
+            <img src="pora.png" alt="pora">
+            </a>
+
+            <ul class="nav-links">
+            <li><a href="#"></a></li>
+            <li><a href="urlshortner.html">URL Shortener</a></li>
+            <li style="font-weight: 800; font-variant-caps: all-petite-caps;">
+                <a href="itsme.html"><span style="color: rgb(248, 212, 11);">It's me</span></a>
+            </li>
+            </ul>
+        </div>
+        </nav>
+    </header>
+
+    <div class="container-shortner-main">
+        <div class="container-shortner">
+            <h1 class="title-head">Dark Mode URL Shortener</h1>
+            
+        <div class="form-group">
+            <label for="url-input">Enter URL to shorten:</label>
+            <input type="url" id="url-input" placeholder="https://example.com" required>
+        </div>
+        
+        <button id="shorten-btn">Shorten URL</button>
+            
+            <div id="result" class="result"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>All shortened URLs are stored locally in your browser</p>
+    </footer>
+
+    <script src="url.js"></script>
+
+</body>
+</html>

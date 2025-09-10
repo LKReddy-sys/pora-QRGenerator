@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me</title>
+
+    <!-- Google tag (gtag.js) - REPLACE the ID below if yours is different -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZSPR40F6T"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GZSPR40F6T'); /* same ID here */
+  </script>
+
+   <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <nav>
+            <div class="container">
+                <a href="index.html">
+                <img src="pora.png" alt="pora">
+                </a>
+
+                <ul class="nav-links">
+                <li><a href="#"></a></li>
+                <li><a href="#">URL Shortener</a></li>
+                <li style="font-weight: 800; font-variant-caps: all-petite-caps;">
+                    <a href="#"><span style="color: rgb(248, 212, 11);">It's me</span></a>
+                </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="contact-form-container-main">
+
+        <div class="contact-form-container">
+            <div class="form-header">
+                <h1>Contact Me</h1>
+                <p>Reach out to me if you want to create your own unlimited QR codes and track their metrics using Google Analytics for free.</p>
+            </div>
+
+            <!-- 
+                IMPORTANT: 
+                Replace "YOUR_UNIQUE_URL_HERE" with the endpoint URL you got from Formspree.
+            -->
+            <form action="https://formspree.io/f/xandvqon" method="POST">
+                
+                <!-- Name Field -->
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" class="input-field" placeholder="John Doe" required>
+                </div>
+
+                <!-- Email Field -->
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="email" class="input-field" placeholder="you@example.com" required>
+                </div>
+
+                <!-- Message Field -->
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" class="input-field" placeholder="Your message here..." required></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

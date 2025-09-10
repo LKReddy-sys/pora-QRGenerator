@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PORA QR Code Generator</title>
+
+  <!-- Google tag (gtag.js) - REPLACE the ID below if yours is different -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GZSPR40F6T"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-GZSPR40F6T'); /* same ID here */
+  </script>
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- QR Code Styling library -->
+  <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.8.2/lib/qr-code-styling.min.js"></script>
+</head>
+
+<body>
+  <header class="header">
+    <nav>
+      <div class="container">
+        <a href="index.html" class="logo">
+          <img src="pora.png" alt="pora">
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#"></a></li>
+          <li><a href="urlshortner.html">URL Shortener</a></li>
+          <li style="font-weight: 800; font-variant-caps: all-petite-caps;">
+            <a href="itsme.html"><span style="color: rgb(248, 212, 11);">It's me</span></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <div class="wrap">
+    <h1>QR Code Generator</h1>
+    <p class="tip">
+      You can create <b>permanent</b> QR images by encoding any URL
+      (for analytics we recommend using UTM-tagged links + Google Analytics).
+      This tool builds the URL for you and generates styled QR images.
+    </p>
+
+    <div class="grid">
+      <!-- Controls -->
+      <div class="card">
+        <h2>1) UTM Builder</h2>
+        <label>Base URL to send users to (example: https://example.com/page)</label>
+        <input id="baseUrl" class="card input" type="text" placeholder="https://example.com/landing" />
+        <div class="row">
+          <div>
+            <label>utm_source</label>
+            <input id="utm_source" type="text" placeholder="e.g. newsletter, poster, app" />
+          </div>
+          <div>
+            <label>utm_medium</label>
+            <input id="utm_medium" type="text" placeholder="e.g. qr, email, social" />
+          </div>
+        </div>
+        <label>utm_campaign</label>
+        <input id="utm_campaign" type="text" placeholder="e.g. summer_sale_2025" />
+        <div class="row">
+          <div>
+            <label>utm_term (optional)</label>
+            <input id="utm_term" type="text" placeholder="keyword or term" />
+          </div>
+          <div>
+            <label>utm_content (optional)</label>
+            <input id="utm_content" type="text" placeholder="variation id, button text" />
+          </div>
+        </div>
+
+        <div class="btns" style="margin:8px 0 8px 0;">
+          <button id="buildUtm" class="ghost">Build UTM URL</button>
+          <button id="copyUtm" class="ghost">Copy URL</button>
+        </div>
+        <small class="muted-desc">
+          After building, the final URL will populate the <b>Data / URL</b> field below.
+          Use that URL to generate QR codes. UTM parameters help Google Analytics identify campaign source/medium/campaign name.
+        </small>
+
+        <hr style="margin:14px 0; border-color:#0f1a25"> 
+
+        <h2>2) QR Content & Styling</h2>
+        <label>Data / URL to encode
+          <input id="data" type="text" placeholder="Paste your final URL here (or use Build UTM)" />
+        </label>
+
+        <div class="row">
+          <div>
+            <label>Foreground</label>
+            <div class="row">
+              <input id="fgColor" type="text" placeholder="#2F6BEA" value="#2F6BEA"/>
+              <input id="fgPicker" type="color" value="#2F6BEA"/>
+            </div>
+          </div>
+          <div>
+            <label>Background</label>
+            <div class="row">
+              <input id="bgColor" type="text" placeholder="#ffffff" value="#ffffff"/>
+              <input id="bgPicker" type="color" value="#ffffff"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label>Dots style</label>
+            <select id="dotsType">
+              <option value="square">square</option>
+              <option value="dots">dots</option>
+            </select>
+          </div>
+          <div>
+            <label>Corner squares</label>
+            <select id="cornerSqType">
+              <option value="square">square</option>
+              <option value="extra-rounded">extra-rounded</option>
+            </select>
+          </div>
+          <div>
+            <label>Corner dots</label>
+            <select id="cornerDotType">
+              <option value="dot">dot</option>
+              <option value="square">square</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label>Size (px)
+              <input id="size" type="number" min="200" max="1200" step="10" value="420" />
+            </label>
+          </div>
+          <div>
+            <label>Quiet zone / border (px)
+              <input id="margin" type="number" min="0" max="50" step="1" value="4" />
+            </label>
+          </div>
+          <div>
+            <label>Error correction
+              <select id="ecLevel">
+                <option value="M">M</option>
+                <option value="L">L</option>
+                <option value="Q">Q</option>
+                <option value="H" selected>H</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <h2 style="margin-top:18px;">3) Logo (optional)</h2>
+        <label>Upload logo (PNG with transparency recommended)
+          <input id="logo" type="file" accept="image/*" />
+        </label>
+        <div class="row">
+          <div>
+            <label>Logo size (% of QR)
+              <input id="logoSize" type="number" min="5" max="45" value="22" />
+            </label>
+          </div>
+          <div>
+            <label>Logo padding (px)
+              <input id="logoMargin" type="number" min="0" max="40" value="6" />
+            </label>
+          </div>
+        </div>
+        <div class="form-row">
+          <label class="checkbox-label">
+            <input type="checkbox" id="hideBgDots" checked />
+            Hide background dots behind the logo
+          </label>
+        </div>
+
+        <div class="btns">
+          <button id="generate" class="primary">Generate / Update</button>
+          <select id="filetype" class="ghost" style="max-width:140px;">
+            <option value="png" selected>PNG</option>
+            <option value="svg">SVG</option>
+            <option value="webp">WEBP</option>
+            <option value="jpg">JPG</option>
+          </select>
+          <button id="download" class="ghost">Download</button>
+        </div>
+      </div>
+
+      <!-- Preview -->
+      <div class="card-preview">
+        <h2>Preview</h2>
+        <div id="preview"></div>
+        <div style="margin-top:12px;">
+          <strong>Final URL (for copying):</strong>
+          <div id="finalUrl" style="word-break:break-all;margin-top:6px;color:#cbd5e1"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
